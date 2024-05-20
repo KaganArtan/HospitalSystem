@@ -9,7 +9,6 @@ namespace HospitalSystem.Models
         public string Address { get; set; }
         public string City { get; set; }
         public string Phone { get; set; }
-        public byte[] ImageData { get; set; } 
         public List<Doctor> Doctors { get; set; }
         public List<Appointment> Appointments { get; set; }
     }

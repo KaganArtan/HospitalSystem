@@ -36,7 +36,7 @@ namespace HospitalSystem.Migrations
                     b.Property<int>("DoctorId")
                         .HasColumnType("int");
 
-                    b.Property<int>("HospitalId")
+                    b.Property<int?>("HospitalId")
                         .HasColumnType("int");
 
                     b.Property<int>("PatientId")
@@ -347,11 +347,9 @@ namespace HospitalSystem.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("HospitalSystem.Models.Hospital", "hospital")
+                    b.HasOne("HospitalSystem.Models.Hospital", null)
                         .WithMany("Appointments")
-                        .HasForeignKey("HospitalId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("HospitalId");
 
                     b.HasOne("HospitalSystem.Models.Patient", "Patient")
                         .WithMany("Appointments")
@@ -362,8 +360,6 @@ namespace HospitalSystem.Migrations
                     b.Navigation("Doctor");
 
                     b.Navigation("Patient");
-
-                    b.Navigation("hospital");
                 });
 
             modelBuilder.Entity("HospitalSystem.Models.Doctor", b =>
